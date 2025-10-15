@@ -8,7 +8,8 @@ function App() {
     <>
       <Header />
       <main className="main-content">
-        <Home />
+        <Home   />
+        <h1>Home</h1>
         <p>contenu principal de la page...</p>
       </main>
       <Footer />
