@@ -7,7 +7,7 @@ const Home = () => {
       <Section sectionTitle="Mon application React">
         <Article>
           <Title title="Mon premier article" levelTitle={2} />
-          <Paragraph>Initialisation à</Paragraph>
+          <Paragraph>Initialisation de l'application React</Paragraph>
         </Article>
       </Section> 
     </>
