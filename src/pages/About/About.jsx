@@ -1,5 +1,5 @@
-import "./About.css";
 import { Section, Article, Title, Paragraph } from "@/components";
+import "./About.css";
 
 const About = () => {
   return (

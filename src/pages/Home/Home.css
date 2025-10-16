@@ -1,0 +1,45 @@
+.home {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home h1 {
+  text-align: center;
+}
+
+.home h1,
+.home h2,
+.home p {
+  color: inherit;
+}
+
+.home p {
+  line-height: 1.6;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  border: 2px solid;
+}
+
+.app-layout.light button {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #2980b9;
+}
+
+.app-layout.dark button {
+  background-color: #34495e;
+  color: #ecf0f1;
+  border-color: #5a6c7d;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}

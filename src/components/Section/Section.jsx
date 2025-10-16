@@ -1,4 +1,3 @@
-import "./Section.css";
 import Title from "../Title/Title";
 
 const Section = ({ sectionTitle, addStyles, children }) => {
