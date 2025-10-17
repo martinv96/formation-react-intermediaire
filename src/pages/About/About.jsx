@@ -4,7 +4,7 @@ import "./About.css";
 const About = () => {
   return (
     <div className="about">
-      <Section sectionTitle="a propos de l'application">
+      <Section sectionTitle="A propos de l'application">
         <Article>
           <Title title="Article 1" levelTitle={2} />
           <Paragraph>Ceci est l'article 1 de la page A propos.</Paragraph>
