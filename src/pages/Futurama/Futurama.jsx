@@ -4,6 +4,13 @@ import { Article, Title, Paragraph } from "@/components";
 import { FuturamaContext } from "@/contexts/FuturamaContext/FuturamaContext";
 // ici on importe les fonctions utilitaires sous l'alias LocalDatas
 import * as LocalDatas from "@/utils/LocalDatas/LocalDatas";
+// ici on importe les fonctions de traduction
+import {
+  translateGender,
+  translateSpecies,
+  translateOccupation,
+  translateSaying,
+} from "@/utils/FuturamaTranslations";
 
 const Futurama = () => {
   // ici on récupère les données depuis le contexte partagé
@@ -12,6 +19,8 @@ const Futurama = () => {
   const [character, setCharacter] = useState(null);
   // ici on stocke les données de l'API dans un état local
   const [charactersList, setCharactersList] = useState(null);
+  // ici on gère la langue (français ou anglais)
+  const [isFrench, setIsFrench] = useState(false);
 
   const returnRandomCharacter = (charactersList) => {
     const randomCharacter =
@@ -46,7 +55,14 @@ const Futurama = () => {
   }, [charactersList, character]);
 
   return (
-    <div className="futurama">
+    <div className="futurama" style={{ position: "relative" }}>
+      <button
+        onClick={() => setIsFrench(!isFrench)}
+        className={`translation-button ${isFrench ? "french" : "english"}`}
+      >
+        {isFrench ? "FR" : "EN"}
+      </button>
+
       <h1>Futurama</h1>
 
       {/* ici on affiche le message de chargement */}
@@ -71,15 +87,17 @@ const Futurama = () => {
       {/* ici on affiche les infos du personnage sélectionné */}
       {character && character.name && (
         <Article>
-          <button
-            onClick={() =>
-              !charactersList
-                ? fetchCharacters()
-                : setCharacter(returnRandomCharacter(charactersList))
-            }
-          >
-            Nouveau personnage
-          </button>
+          <div className="new-character-container">
+            <button
+              onClick={() =>
+                !charactersList
+                  ? fetchCharacters()
+                  : setCharacter(returnRandomCharacter(charactersList))
+              }
+            >
+              Nouveau personnage
+            </button>
+          </div>
 
           <Title
             title={`${character.name.first} ${character.name.middle} ${character.name.last}`}
@@ -95,10 +113,12 @@ const Futurama = () => {
               : "Inconnu"}
           </Paragraph>
           <Paragraph>
-            <strong>Genre</strong> : {character.gender}
+            <strong>Genre</strong> :{" "}
+            {translateGender(character.gender, isFrench)}
           </Paragraph>
           <Paragraph>
-            <strong>Espèce</strong> : {character.species}
+            <strong>Espèce</strong> :{" "}
+            {translateSpecies(character.species, isFrench)}
           </Paragraph>
 
           {character.homePlanet && (
@@ -108,23 +128,25 @@ const Futurama = () => {
           )}
 
           <Paragraph>
-            <strong>Occupation</strong> : {character.occupation}
+            <strong>Occupation</strong> :{" "}
+            {translateOccupation(character.occupation, isFrench)}
           </Paragraph>
 
           {/* ici on affiche une citation aléatoire */}
           <Paragraph>
             <strong>Expression</strong> :{" "}
-            {
+            {translateSaying(
               character.sayings[
                 Math.floor(Math.random() * character.sayings.length)
-              ]
-            }
+              ],
+              isFrench
+            )}
           </Paragraph>
 
           {/* ici on liste toutes les citations du personnage */}
           <ul>
             {character.sayings.map((saying, index) => (
-              <li key={index}>{saying}</li>
+              <li key={index}>{translateSaying(saying, isFrench)}</li>
             ))}
           </ul>
         </Article>

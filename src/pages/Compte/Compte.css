@@ -1,0 +1,142 @@
+/* Page Compte */
+.compte {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s;
+}
+
+.compte h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* Informations utilisateur */
+.user-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border: 1px solid #e9ecef;
+}
+
+.user-info strong {
+  color: #495057;
+}
+
+/* Boutons */
+.account-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.account-actions button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: #007bff;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #6c757d;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: #dc3545;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Liste utilisateurs */
+.users-list {
+  margin-top: 15px;
+}
+
+.user-item {
+  padding: 10px 15px;
+  margin: 8px 0;
+  background: #f8f9fa;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
+}
+
+.current-user {
+  color: #28a745;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .compte {
+    padding: 15px;
+  }
+  .account-actions {
+    flex-direction: column;
+  }
+  .account-actions button {
+    width: 100%;
+  }
+  .compte h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Dark mode */
+.compte.dark {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.compte.dark .user-info {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+.compte.dark .user-info strong {
+  color: #cbd5e0;
+}
+
+.compte.dark .user-item {
+  background: #2d3748;
+  color: #ffffff;
+  border-left-color: #3182ce;
+}
+
+.compte.dark .current-user {
+  color: #68d391;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -46,6 +46,39 @@
   transform: translateY(-2px);
 }
 
+/* Bouton de traduction FR/EN */
+.translation-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1000;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+
+.translation-button.french {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.translation-button.english {
+  background: #ccc;
+  border-color: #ccc;
+  color: black;
+}
+
+/* Conteneur pour centrer le bouton nouveau personnage */
+.new-character-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 .futurama ul {
   margin: 20px 0;
   padding: 15px;
