@@ -21,6 +21,9 @@ const MainNav = () => {
         <li>
           <Link to="/inscription">S'inscrire</Link>
         </li>
+        <li className="account">
+          <Link to="/compte">Mon compte</Link>
+        </li>
         <li>
           <button className="theme-toggle" onClick={switchDarkMode}>
             {darkMode ? "☀" : "🌙"}
