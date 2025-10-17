@@ -1,5 +1,6 @@
 import { Section, Article, Title, Paragraph } from "@/components";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "@/contexts/ThemeContext/ThemeContext";
 import { secureGetItem, secureSetItem } from "@/utils/CryptoUtils";
 import "./Compte.css";
@@ -7,6 +8,8 @@ import "./Compte.css";
 const Compte = () => {
   // ici on récupère le thème depuis le contexte
   const { theme } = useContext(ThemeContext);
+  // Hook de navigation React Router
+  const navigate = useNavigate();
   // ici on stocke les informations de l'utilisateur connecté
   const [currentUser, setCurrentUser] = useState(null);
   // ici on stocke tous les utilisateurs pour affichage
@@ -35,7 +38,7 @@ const Compte = () => {
   const handleLogout = () => {
     sessionStorage.removeItem("currentUser");
     setCurrentUser(null);
-    window.location.href = "/inscription"; // redirection vers la page de connexion
+    navigate("/inscription"); // redirection vers la page de connexion
   };
 
   // ici fonction pour supprimer son compte (sécurisée)
@@ -50,7 +53,7 @@ const Compte = () => {
       sessionStorage.removeItem("currentUser");
 
       alert("Compte supprimé avec succès");
-      window.location.href = "/inscription";
+      navigate("/inscription");
     }
   };
 
@@ -68,7 +71,7 @@ const Compte = () => {
             </Paragraph>
             <div className="account-actions">
               <button
-                onClick={() => (window.location.href = "/inscription")}
+                onClick={() => navigate("/inscription")}
                 className="btn-primary"
               >
                 Se connecter

@@ -1,5 +1,6 @@
 import { Section, Article, Title, Paragraph } from "@/components";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   hashPassword,
   verifyPassword,
@@ -9,6 +10,7 @@ import {
 import "./Auth.css";
 
 const Auth = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
@@ -156,7 +158,7 @@ const Auth = () => {
         alert("Connexion réussie !");
 
         // redirection vers la page compte
-        window.location.href = "/compte";
+        navigate("/compte");
       }
 
       // ! on réinitialise le formulaire en cas de succès
