@@ -21,7 +21,7 @@ const MainNav = () => {
         <li>
           <Link to="/inscription">S'inscrire</Link>
         </li>
-        <li className="account">
+        <li>
           <Link to="/compte">Mon compte</Link>
         </li>
         <li>
