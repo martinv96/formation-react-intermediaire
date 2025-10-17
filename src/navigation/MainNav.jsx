@@ -19,6 +19,9 @@ const MainNav = () => {
           <Link to="/futurama">Futurama</Link>
         </li>
         <li>
+          <Link to="/inscription">S'inscrire</Link>
+        </li>
+        <li>
           <button className="theme-toggle" onClick={switchDarkMode}>
             {darkMode ? "☀" : "🌙"}
           </button>

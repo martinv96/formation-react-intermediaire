@@ -1,0 +1,44 @@
+form {
+  width: 350px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  label {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  input:not([type="submit"]) {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    border: unset;
+    border-radius: 0.15rem;
+    box-shadow: 0 0 4px -0.5px #333;
+    transition: box-shadow 0.325s ease-out;
+
+    &:hover {
+      box-shadow: 0 0.25px 6px -1px #333;
+    }
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    width: max-content;
+    max-width: calc(80% - 1rem);
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+}
+
+.app-layout.dark h1 {
+  color: #ffffff;
+}

@@ -8,12 +8,12 @@
   text-align: center;
 }
 
-.about h1,
-.about h2,
-.about p {
-  color: inherit;
-}
-
 .about p {
   line-height: 1.6;
+}
+
+.app-layout.dark .about h1,
+.app-layout.dark .about h2,
+.app-layout.dark .about p {
+  color: white;
 }

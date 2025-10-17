@@ -8,14 +8,14 @@
   text-align: center;
 }
 
-.home h1,
-.home h2,
-.home p {
-  color: inherit;
-}
-
 .home p {
   line-height: 1.6;
+}
+
+.app-layout.dark .home h1,
+.app-layout.dark .home h2,
+.app-layout.dark .home p {
+  color: white;
 }
 
 button {

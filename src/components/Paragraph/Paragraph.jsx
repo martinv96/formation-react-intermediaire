@@ -1,3 +1,5 @@
+import "./Paragraph.css";
+
 const Paragraph = ({ children }) => {
   return <p>{children}</p>;
 };

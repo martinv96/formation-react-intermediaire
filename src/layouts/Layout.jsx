@@ -2,7 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./Root";
-import { Home, About, NotFound, Futurama } from "../pages";
+import { Home, About, NotFound, Futurama, Auth } from "../pages";
 import {
   ThemeProvider,
   ThemeContext,
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
             <Futurama />
           </FuturamaProvider>
         ),
+      },
+      {
+        path: "inscription",
+        element: <Auth />,
       },
     ],
     errorElement: <NotFound />,
