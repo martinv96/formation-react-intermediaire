@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: "futurama",
-        element: <FuturamaProvider><Futurama /></FuturamaProvider>,
+        element: (
+          <FuturamaProvider>
+            <Futurama />
+          </FuturamaProvider>
+        ),
       },
     ],
     errorElement: <NotFound />,

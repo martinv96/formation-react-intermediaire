@@ -1,44 +1,56 @@
 import "./Futurama.css";
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Article, Title, Paragraph } from "@/components";
 import { FuturamaContext } from "@/contexts/FuturamaContext/FuturamaContext";
+// ici on importe les fonctions utilitaires sous l'alias LocalDatas
+import * as LocalDatas from "@/utils/LocalDatas/LocalDatas";
 
 const Futurama = () => {
   // ici on récupère les données depuis le contexte partagé
   const { characters, errorAPI, fetchCharacters } = useContext(FuturamaContext);
   // ici on stocke le personnage actuellement affiché
   const [character, setCharacter] = useState(null);
+  // ici on stocke les données de l'API dans un état local
+  const [charactersList, setCharactersList] = useState(null);
 
   const returnRandomCharacter = (charactersList) => {
-    return charactersList[Math.floor(Math.random() * charactersList.length)];
+    const randomCharacter =
+      charactersList[Math.floor(Math.random() * charactersList.length)];
+    return randomCharacter;
   };
-
-  // ici on fait la fonction pour choisir un personnage au hasard
-  const selectRandomCharacter = useCallback(() => {
-    if (characters && characters.length > 0) {
-      const randomCharacter = returnRandomCharacter(characters);
-      setCharacter(randomCharacter);
-    }
-  }, [characters]);
 
   // ici on charge tous les personnages au démarrage
   useEffect(() => {
-    fetchCharacters();
-  }, [fetchCharacters]);
+    const futuramaLocalDatas = LocalDatas.getData("futuramaCharactersList");
+    if (futuramaLocalDatas) {
+      setCharactersList(JSON.parse(futuramaLocalDatas));
+    }
+    if (!charactersList) {
+      fetchCharacters();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ici on synchronise les données du contexte avec l'état local
+  useEffect(() => {
+    if (characters && characters.length > 0) {
+      setCharactersList(characters);
+    }
+  }, [characters]);
 
   // ici on sélectionne automatiquement un personnage quand les données arrivent
   useEffect(() => {
-    if (characters && characters.length > 0 && !character) {
-      selectRandomCharacter();
+    if (charactersList && charactersList.length > 0 && !character) {
+      setCharacter(returnRandomCharacter(charactersList));
     }
-  }, [characters, character, selectRandomCharacter]);
+  }, [charactersList, character]);
 
   return (
     <div className="futurama">
       <h1>Futurama</h1>
 
       {/* ici on affiche le message de chargement */}
-      {!characters && !errorAPI && (
+      {!charactersList && !errorAPI && (
         <Article>
           <Title title="Chargement..." levelTitle={2} />
           <Paragraph>Les données sont en cours de chargement...</Paragraph>
@@ -59,7 +71,15 @@ const Futurama = () => {
       {/* ici on affiche les infos du personnage sélectionné */}
       {character && character.name && (
         <Article>
-          <button onClick={selectRandomCharacter}>Nouveau personnage</button>
+          <button
+            onClick={() =>
+              !charactersList
+                ? fetchCharacters()
+                : setCharacter(returnRandomCharacter(charactersList))
+            }
+          >
+            Nouveau personnage
+          </button>
 
           <Title
             title={`${character.name.first} ${character.name.middle} ${character.name.last}`}
