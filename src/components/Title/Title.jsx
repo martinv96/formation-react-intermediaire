@@ -19,7 +19,7 @@ const Title = ({ title, levelTitle, addStyles }) => {
     }
   };
 
-  return <>{getLevelTitle(levelTitle) ?? <p>Martin Vallée</p>}</>;
+  return getLevelTitle(levelTitle) || <h1 style={addStyles}>Martin Vallée</h1>;
 };
 
 export default Title;

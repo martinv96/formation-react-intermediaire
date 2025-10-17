@@ -1,4 +1,4 @@
-import { Title, Article, Section, Paragraph } from "../../components";
+import { Title, Article, Section, Paragraph } from "@/components";
 import "./Home.css";
 
 const Home = () => {
@@ -6,8 +6,14 @@ const Home = () => {
     <div className="home">
       <Section sectionTitle="Mon application React">
         <Article>
-          <Title title="Mon premier article" levelTitle={2} />
+          <Title
+            title="Bienvenue sur mon projet react intermédiaire"
+            levelTitle={2}
+          />
           <Paragraph>Initialisation à React</Paragraph>
+          <Paragraph>
+            Ce projet à pour objectif de me familiariser avec React
+          </Paragraph>
         </Article>
       </Section>
     </div>

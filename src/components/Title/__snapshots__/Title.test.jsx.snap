@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`composent Title (Jest Renderer) devrait rendre un titre de niveau h1 1`] = `
+<h1>
+  Mon titre principal
+</h1>
+`;
